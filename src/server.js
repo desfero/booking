@@ -8,10 +8,11 @@ import session from 'express-session';
 import bodyParser from 'body-parser';
 import User from './models/User';
 import mongoStore from 'connect-mongo';
+import config from './config';
 import { Schema } from './schema';
 
 const MongoStore = mongoStore(session);
-const config = require('./config').default;
+
 const port = config.port;
 const server = global.server = express();
 
