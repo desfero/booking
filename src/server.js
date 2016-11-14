@@ -1,7 +1,6 @@
-import { Schema } from './schema';
+import 'babel-polyfill';
 import graphqlHTTP from 'express-graphql';
 import express from 'express';
-import 'babel-polyfill';
 import path from 'path';
 import mongoose from 'mongoose';
 import passport from './passport';
@@ -9,6 +8,7 @@ import session from 'express-session';
 import bodyParser from 'body-parser';
 import User from './models/User';
 import mongoStore from 'connect-mongo';
+import { Schema } from './schema';
 
 const MongoStore = mongoStore(session);
 const config = require('./config').default;
