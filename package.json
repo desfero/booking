@@ -10,9 +10,12 @@
     "clean": "babel-node --eval \"require('./tools/clean').default().catch(err => console.error(err.stack))\"",
     "copy": "babel-node --eval \"require('./tools/copy').default().catch(err => console.error(err.stack))\"",
     "bundle": "babel-node --eval \"require('./tools/bundle').default().catch(err => console.error(err.stack))\"",
-    "start": "babel-node --eval \"require('./tools/start').default().catch(err => console.error(err.stack))\"",
+    "start-dev": "babel-node --eval \"require('./tools/start').default().catch(err => console.error(err.stack))\"",
+    "start": "node ./build/server.js",
+    "postinstall": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+
   "license": "ISC",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
