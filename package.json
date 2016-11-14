@@ -1,8 +1,8 @@
 {
   "name": "booking",
   "version": "0.0.0",
-  "description": "Add your description here.",
-  "author": "Your Name <handle@domain.com>",
+  "description": "Backend for booking system",
+  "author": "Pavlo Liulia",
   "main": "src/server.js",
   "scripts": {
     "lint": "eslint src tools",
@@ -22,7 +22,6 @@
     "express-graphql": "^0.5.4",
     "express-session": "^1.14.2",
     "graphql": "^0.7.2",
-    "lodash.noop": "^3.0.1",
     "mongoose": "^4.6.6",
     "passport": "^0.3.2",
     "source-map-support": "^0.4.6",

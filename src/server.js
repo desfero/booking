@@ -11,8 +11,8 @@ import User from './models/User';
 import mongoStore from 'connect-mongo';
 
 const MongoStore = mongoStore(session);
-const config = require('./config/main.json');
-const port = (!global.process.env.PORT) ? 1234 : global.process.env.PORT;
+const config = require('./config').default;
+const port = config.port;
 const server = global.server = express();
 
 mongoose.connect(config.mongoDB);
