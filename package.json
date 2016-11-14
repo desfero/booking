@@ -1,6 +1,6 @@
 {
   "name": "booking",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Backend for booking system",
   "author": "Pavlo Liulia",
   "main": "src/server.js",
