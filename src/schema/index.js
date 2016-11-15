@@ -7,13 +7,18 @@ import {
   userUpdateMailField
 } from './users';
 
+import {
+    bookingListField
+} from './bookings';
+
 const queryType = new GraphQLObjectType({
   name: 'Query',
   description: 'Root for query operations.',
   fields: () => ({
     getItem: getItemField,
     self: selfField,
-    users: userListField
+    users: userListField,
+    bookings: bookingListField
   })
 });
 

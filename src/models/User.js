@@ -15,9 +15,8 @@ UserSchema.set('toObject', { virtuals: true, getters: true });
 
 UserSchema.pre('save', function(next) {
   var user = this;
-  const now = new Date();
 
-  user.updatedAt = now;
+  user.updatedAt = new Date();
 
   if(!user.isModified('password')) return next();
   bcrypt.genSalt(null, function(err, salt) {
@@ -40,5 +39,4 @@ UserSchema.methods.validPassword = function(password) {
     });
   });
 };
-
-module.exports = mongoose.model('User', UserSchema);
+export default mongoose.model('User', UserSchema);
