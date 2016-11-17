@@ -1,7 +1,6 @@
 {
   "parser": "babel-eslint",
-  "plugins": [
-  ],
+  "plugins": [],
   "env": {
     "browser": true,
     "node": true,
@@ -19,6 +18,6 @@
 
     // Code style
     "indent": [2, 2],
-    "quotes": [2, "single"],
+    "quotes": [2, "single"]
   }
 }

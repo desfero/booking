@@ -75,7 +75,7 @@ const _updateMail = {
     }
     throw new GraphQLError('Query error: Not logged in');
   }
-}
+};
 
 const _signup = {
   description: 'Register a new user account. Returns newly created user or null if username is taken.',
@@ -93,8 +93,9 @@ const _signup = {
   resolve(root, args) {
     return users.signup(args.username, args.password);
   }
-}
+};
 
+export default userType;
 export const selfField = _self;
 export const userListField = _list;
 export const userUpdateMailField = _updateMail;

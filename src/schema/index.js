@@ -1,5 +1,4 @@
 import { GraphQLObjectType, GraphQLSchema } from 'graphql';
-import { getItemField } from './items';
 import {
   selfField,
   userListField,
@@ -15,7 +14,6 @@ const queryType = new GraphQLObjectType({
   name: 'Query',
   description: 'Root for query operations.',
   fields: () => ({
-    getItem: getItemField,
     self: selfField,
     users: userListField,
     bookings: bookingListField

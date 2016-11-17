@@ -9,8 +9,25 @@ import {
 } from 'graphql-custom-types';
 import { GraphQLError } from 'graphql/error';
 
+import userType from './users';
 import Bookings from '../lib/bookings';
+
 const bookings = new Bookings();
+
+const passengerType = new GraphQLObjectType({
+    name: 'Passenger',
+    description: 'Representation of booking passenger.',
+    fields: () => ({
+        firstName: {
+            description: 'Passenger first name',
+            type: GraphQLString
+        },
+        lastName: {
+            description: 'Passenger last name',
+            type: GraphQLString
+        }
+    })
+});
 
 const bookingType = new GraphQLObjectType({
     name: 'Booking',
@@ -36,10 +53,10 @@ const bookingType = new GraphQLObjectType({
             description: 'Booking arrival station.',
             type: GraphQLString
         },
-        //firstPassenger: {
-        //    description: 'Unique username.',
-        //    type: ObjectId
-        //},
+        firstPassenger: {
+            description: 'Booking holder.',
+            type: userType
+        }
     })
 });
 
