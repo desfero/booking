@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "node"
+after_success:
+  - npm run build #make a dist folder
+before_deploy:
+  - cd build
+deploy:
+  provider: heroku;
+  app: your-app-name # optional if it's the same as your repo name
+  api_key: "YOUR API TOKE
