@@ -1,28 +1,27 @@
 import 'babel-polyfill';
-import graphqlHTTP from 'express-graphql';
 import express from 'express';
 import path from 'path';
 import mongoose from 'mongoose';
-import passport from './passport';
 import session from 'express-session';
 import bodyParser from 'body-parser';
 import mongoStore from 'connect-mongo';
 import config from './config';
-import { Schema } from './schema';
-
-const MongoStore = mongoStore(session);
+import passport from './middlewares/passport';
+import graphql from './middlewares/graphql';
+import notFound from './middlewares/notFound';
 
 const port = config.port;
-const server = global.server = express();
+const server = express();
 
 mongoose.connect(config.mongoDB);
 
-server.set('port', port);
+server.set('port', config.port);
 server.use(express.static(path.join(__dirname, 'public')));
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
-server.use(passport.initialize());
-server.use(passport.session());
+
+// session middleware
+const MongoStore = mongoStore(session);
 server.use(session({
   secret: config.sessionSecret,
   resave: true,
@@ -30,21 +29,14 @@ server.use(session({
   store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 
-server.post('/login', passport.authenticate('local'), function(req, res) {
-  res.sendStatus(200);
-});
+// passport middleware
+server.use(passport);
 
-server.get('/logout', function(req, res) {
-  req.logout();
-  req.session.destroy();
-  res.sendStatus(200);
-});
+// graphql middleware
+server.use(graphql);
 
-server.use('/graphql', graphqlHTTP(request => ({
-  schema: Schema,
-  rootValue: { session: request.session },
-  graphiql: true
-})));
+// notFound middleware
+server.use(notFound);
 
 server.listen(server.get('port'), () => {
   console.log('The server is running at http://localhost:' + server.get('port'));

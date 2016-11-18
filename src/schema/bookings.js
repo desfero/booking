@@ -12,8 +12,6 @@ import { GraphQLError } from 'graphql/error';
 import userType from './users';
 import Bookings from '../lib/bookings';
 
-const bookings = new Bookings();
-
 const passengerType = new GraphQLObjectType({
     name: 'Passenger',
     description: 'Representation of booking passenger.',
@@ -56,6 +54,10 @@ const bookingType = new GraphQLObjectType({
         firstPassenger: {
             description: 'Booking holder.',
             type: userType
+        },
+        otherPassengers: {
+            description: 'Passenger without booking holder (firstPassenger)',
+            type: new GraphQLList(passengerType)
         }
     })
 });
@@ -64,8 +66,20 @@ const _list = {
     description: 'Information about all bookings.',
     type: new GraphQLList(bookingType),
     resolve() {
+        const bookings = new Bookings();
         return bookings.getList();
     }
 };
 
+const _create = {
+    description: 'Create new booking',
+    type: bookingType,
+    // refactor to pass bookingType as arguments
+    resolve(root, args) {
+        const bookings = new Bookings();
+        return bookings.create(args);
+    }
+};
+
 export const bookingListField = _list;
+export const bookingCreate = _create;
