@@ -7,9 +7,9 @@ import {
 import {
     GraphQLDateTime
 } from 'graphql-custom-types';
-import { GraphQLError } from 'graphql/error';
 
 import userType from './users';
+import scheduleType from './schedules';
 import Bookings from '../lib/bookings';
 
 const passengerType = new GraphQLObjectType({
@@ -35,21 +35,9 @@ const bookingType = new GraphQLObjectType({
             description: 'Booking unique id.',
             type: GraphQLID
         },
-        departure: {
-            description: 'Booking departure date.',
-            type: GraphQLDateTime
-        },
-        arrival: {
-            description: 'Booking arrival date.',
-            type: GraphQLDateTime
-        },
-        from: {
-            description: 'Booking departure station.',
-            type: GraphQLString
-        },
-        to: {
-            description: 'Booking arrival station.',
-            type: GraphQLString
+      schedule: {
+        description: 'Booking schedule.',
+        type: scheduleType
         },
         firstPassenger: {
             description: 'Booking holder.',
@@ -62,24 +50,24 @@ const bookingType = new GraphQLObjectType({
     })
 });
 
-const _list = {
+const list = {
     description: 'Information about all bookings.',
     type: new GraphQLList(bookingType),
     resolve() {
-        const bookings = new Bookings();
-        return bookings.getList();
+      return Bookings.getList();
     }
 };
 
-const _create = {
+const create = {
     description: 'Create new booking',
     type: bookingType,
     // refactor to pass bookingType as arguments
     resolve(root, args) {
-        const bookings = new Bookings();
-        return bookings.create(args);
+      return Bookings.create(args);
     }
 };
 
-export const bookingListField = _list;
-export const bookingCreate = _create;
+export {
+  list,
+  create
+};

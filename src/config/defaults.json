@@ -1,5 +1,5 @@
 {
   "sessionSecret": "9561862c43f55f6b39697bfe6cb059f3",
-  "mongoDB": "mongodb://localhost/booking",
+  "mongoDB": "mongodb://127.0.0.1/booking",
   "port": 1234
 }

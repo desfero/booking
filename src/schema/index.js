@@ -1,22 +1,16 @@
 import { GraphQLObjectType, GraphQLSchema } from 'graphql';
-import {
-  selfField,
-  userListField,
-  userSignupField,
-  userUpdateMailField
-} from './users';
-
-import {
-    bookingListField
-} from './bookings';
+import * as users from './users';
+import * as bookings from './bookings';
+import * as schedules from './schedules';
 
 const queryType = new GraphQLObjectType({
   name: 'Query',
   description: 'Root for query operations.',
   fields: () => ({
-    self: selfField,
-    users: userListField,
-    bookings: bookingListField
+    self: users.self,
+    users: users.list,
+    bookings: bookings.list,
+    schedules: schedules.list
   })
 });
 
@@ -24,8 +18,8 @@ const mutationType = new GraphQLObjectType({
   name: 'Mutation',
   description: 'Root for mutation operations.',
   fields: () => ({
-    signup: userSignupField,
-    updateEmail: userUpdateMailField
+    signup: users.signup,
+    updateEmail: users.updateMail
   })
 });
 

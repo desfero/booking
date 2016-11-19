@@ -1,7 +1,7 @@
 import Booking from '../models/Booking';
 
 class Bookings {
-    getList() {
+  static getList() {
         return Booking.find({}).populate('firstPassenger').exec();
     }
 }

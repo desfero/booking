@@ -12,8 +12,6 @@ import {
 import { GraphQLError } from 'graphql/error';
 import Users from '../lib/users';
 
-const users = new Users();
-
 const userType = new GraphQLObjectType({
   name: 'User',
   description: 'Representation of public user data.',
@@ -41,7 +39,7 @@ const userType = new GraphQLObjectType({
   })
 });
 
-const _self = {
+const self = {
   description: 'Information about the currently logged in user.',
   type: userType,
   resolve(root, _) {
@@ -52,15 +50,15 @@ const _self = {
   }
 };
 
-const _list = {
+const list = {
   description: 'Information about all users.',
   type: new GraphQLList(userType),
   resolve(root, _) {
-    return users.getList();
+    return Users.getList();
   }
 };
 
-const _updateMail = {
+const updateMail = {
   description: 'Update mail address of the currently logged in user.',
   type: userType,
   args: {
@@ -70,14 +68,14 @@ const _updateMail = {
     }
   },
   resolve(root, _) {
-      if(root.session.passport) {
-      return users.updateMail(root.session.passport.user._id, _.mail);
+    if (root.session.passport) {
+      return Users.updateMail(root.session.passport.user._id, _.mail);
     }
     throw new GraphQLError('Query error: Not logged in');
   }
 };
 
-const _signup = {
+const signup = {
   description: 'Register a new user account. Returns newly created user or null if username is taken.',
   type: userType,
   args: {
@@ -91,12 +89,14 @@ const _signup = {
     }
   },
   resolve(root, args) {
-    return users.signup(args.username, args.password);
+    return Users.signup(args.username, args.password);
   }
 };
 
-export default userType;
-export const selfField = _self;
-export const userListField = _list;
-export const userUpdateMailField = _updateMail;
-export const userSignupField = _signup;
+export {
+  userType as default,
+  self,
+  list,
+  updateMail,
+  signup
+};

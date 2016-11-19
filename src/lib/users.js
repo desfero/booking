@@ -1,11 +1,11 @@
 import User from '../models/User';
 
 class Users {
-  getList() {
+  static getList() {
     return User.find({}).exec();
   }
 
-  signup(username, password) {
+  static signup(username, password) {
     console.log(username);
     console.log(password);
     var user = new User({
@@ -16,7 +16,7 @@ class Users {
     return user.save();
   }
 
-  login(username, password, done) {
+  static login(username, password, done) {
     var findUser = User.findOne({ username: username }).exec();
     var user = {};
     findUser.then((data) => {
@@ -29,7 +29,7 @@ class Users {
     });
   }
 
-  updateMail(id, mail) {
+  static updateMail(id, mail) {
     const getUser = User.findOne({_id: id}).exec();
     return getUser.then((user) => {
       user.mail = mail;
