@@ -7,6 +7,6 @@ before_deploy:
 - cd build
 deploy:
   provider: heroku
-  app: test-app
+  app: air-booking
   api_key:
     secure: Xi/nD6vNf9qmkgKx/SQf6PifIy9d7wa2LRBt7pokjXryrgoL8T/tcsEoIVrkTRuUNDbBH6gZg5qMx8zAhuViHewZxZUXOr+FQGIyCPWawRovUEBSwYDyjF8gF5Iq8PSBFP70rZdNPGlt8qfJ0z4Ehaz/i1fK0s+vZh9GenqvmEPK/DrFdiyVNyvDtTIoP6to65JHpnruuZ6HgCIIdhEEA/Mg4XOGMAdmlibX4Bb4XMNkFQK+1JVpxHVgBRcIaKAodFOczG7IZPvSYMz19RaOcwb8NvAMnF/yvXSPPqTJEm7/8yR7JOe7eNlxe7iJsqWKfefSOxYQ60l2Me4W3G/xYYHh5TtvKULYSG2uwOzuYjI55r2rXrF9EGTsomCK710+xiNHuvHdr8XipnN/xhVph/Yh/1TOXPOMvO17A76/A2BZej7M+6codvFW/OqzUTrC6650qOD5PjA7AfPMdbLkgyI4XE9erFmNswII0eH9/bLOZOh/MZ8/vA4OzMjyBHiX+LAt/8lSHl9McYMTFHhKIDrBF0803CSkhP7nOu2Fup6bKU9WmMij/ZXlSjCqce1R5BkYcwCh8i6fvTDf+mPWTdHQNUWztPGcEngLKHymf4emOZEEthj/3IMh/PcLq3TlilIoe3Whgb7JeFZfLFg+be7gBuZj2KoYlaneHoBUmU8=
