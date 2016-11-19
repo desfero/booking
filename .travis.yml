@@ -4,7 +4,7 @@ node_js:
 after_success:
 - npm run build
 before_deploy:
-- cd build
+- cd build & ls -l
 deploy:
   provider: heroku
   app: air-booking
