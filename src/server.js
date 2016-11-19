@@ -13,6 +13,7 @@ import notFound from './middlewares/notFound';
 const port = config.port;
 const server = express();
 
+mongoose.Promise = global.Promise;
 mongoose.connect(config.mongoDB);
 
 server.set('port', config.port);

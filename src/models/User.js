@@ -12,7 +12,6 @@ const UserSchema = new Schema({
 
 UserSchema.set('toJSON', { virtuals: true, getters: true });
 UserSchema.set('toObject', { virtuals: true, getters: true });
-
 UserSchema.pre('save', function(next) {
   var user = this;
 

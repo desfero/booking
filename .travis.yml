@@ -1,11 +1,12 @@
 language: node_js
 node_js:
-  - "node"
+- node
 after_success:
-  - npm run build #make a dist folder
+- npm run build
 before_deploy:
-  - cd build
+- cd build
 deploy:
   provider: heroku;
-  app: your-app-name # optional if it's the same as your repo name
-  api_key: "YOUR API TOKE
+  app: air-booking
+  api_key:
+    secure: JMyIt7itoS0PW/BXEXaRi9MS7gDPzeW1zDPUfJvxGYbHwSAYTSTS9BNuOP2xiiaA2xn61ZtP9XgQ8CL8FiaE8Rh3C92yqQabona5+YXT6pjTxtkzGHQJ8NuvuzJIFQ2faoOflFtb5JektKJNSxbH+ewWizGI93lCQTQ2d1q3ofwHASUYvi7AsHtwI+Rr552w/bB6FORbxm8yuAGx2B4IP5KjMjT5EXsEgWYbK9k1SVrOy8k2ySoIGpk/jzl6bSy7EHjzZD4EEXQurysJf03jeWoeKHqbctNmnWfAZAjiiX1IuM/JJayFGotZWcHa+scRgsN5nAeX0HjSzwY351qPi2Kyy1zdklxZHPKPHfC13ueDaifvGvfTCiUpsz8tlT+i3TyNI0XQq3Go81keQOU6uAmm/qB8ynDO4mkzYPc4wu2cA9elnCDdLY3rYSJGJO3AlGJvorbObqkU5F6kDN0lEPeCFunKOIHAf1ClIUTDEHgkO+f5KYkyE40Hsb1YDu4vovTbTmAwfnyD5zXnzXhPUYEzgeX+Lusm8EadfetZSNQgVrP+K9lBYfmIJW8vQC6zhtnLea5MpzZzUOcRBZwJwhIClc/GmFutLcgQ51gik3AQOfLc78otT0imLTSEPvZO0pfBD4kGSzPAs1EBcSmRY52rC6LiIXpd1bFWxswADfg=
