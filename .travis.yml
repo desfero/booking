@@ -1,10 +1,10 @@
 language: node_js
 node_js:
-- node
+  node
 after_success:
-- npm run build
+  npm run build
 before_deploy:
-- cd build & ls -l
+  cd build
 deploy:
   provider: heroku
   app: air-booking
