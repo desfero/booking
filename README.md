@@ -1,5 +1,5 @@
 # booking
-Backend for booking system for airlines
+Backend for booking system for airlines.
 Frontend: https://github.com/desfero/booking-fr
 
 ## Usage
