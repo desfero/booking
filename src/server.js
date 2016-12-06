@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import session from 'express-session';
 import bodyParser from 'body-parser';
 import mongoStore from 'connect-mongo';
+import cors from 'cors';
 import config from './config';
 import passport from './middlewares/passport';
 import graphql from './middlewares/graphql';
@@ -28,6 +29,12 @@ server.use(session({
   resave: true,
   saveUninitialized: true,
   store: new MongoStore({ mongooseConnection: mongoose.connection })
+}));
+
+// enable cors
+server.use(cors({
+  origin: 'http://localhost:4200',
+  credentials: true,
 }));
 
 // passport middleware

@@ -8,8 +8,7 @@ const router = express.Router();
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    const users = new Users();
-    users.login(username, password, done);
+    Users.login(username, password, done);
   }
 ));
 
