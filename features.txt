@@ -1,0 +1,14 @@
+Tytuł projektu: Flight tickets booking
+
+Wykorzystywane technologie:
+	• Server-side: Node.js, Express, MongoDB, GraphQL
+	• Client-side: SPA, Angular2, Boostrap 4
+
+1. Logowanie/Rejestracja
+3. Komponent do wyszukiwania lotu (/search).
+5. Strona z kalędarzem do wyboru daty i godziny lotu dla wybranego polączenia. (/calendar)
+6. Strona do wpisywania informacji o pasażerach (/passengers).
+7. Strona z wyborem miejsc w samolocie (/seats).
+8. Strona platności (imitacja oplaty) (/payment).
+9. Podsumowanie lotu (informacja o pasażerach, datach i możliwość ściągnięcia karty pokładowej) (/details).
+10. Widok moich rezerwacji (/my-profile).
