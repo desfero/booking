@@ -1,11 +1,12 @@
 # booking
-Booking system for airlines
+Backend for booking system for airlines.
+Frontend: https://github.com/desfero/booking-fr
 
 ## Usage
 
 ### Start the Development Server
 ```Bash
-npm start
+npm run up
 ```
 
 When starting the server there are a couple of parameters you can pass:
