@@ -10,7 +10,7 @@
     "clean": "babel-node --eval \"require('./tools/clean').default().catch(err => console.error(err.stack))\"",
     "copy": "babel-node --eval \"require('./tools/copy').default().catch(err => console.error(err.stack))\"",
     "bundle": "babel-node --eval \"require('./tools/bundle').default().catch(err => console.error(err.stack))\"",
-    "dev": "babel-node --eval \"require('./tools/start').default().catch(err => console.error(err.stack))\"",
+    "up": "babel-node --eval \"require('./tools/start').default().catch(err => console.error(err.stack))\"",
     "start": "node ./server.js",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
