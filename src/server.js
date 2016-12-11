@@ -33,8 +33,8 @@ server.use(session({
 
 // enable cors
 server.use(cors({
-  origin: 'http://localhost:4200',
-  credentials: true,
+  origin: 'http://127.0.0.1:4200',
+  credentials: true
 }));
 
 // passport middleware

@@ -42,11 +42,12 @@ const userType = new GraphQLObjectType({
 const self = {
   description: 'Information about the currently logged in user.',
   type: userType,
-  resolve(root, _) {
-    if(root.session.passport) {
-      return root.session.passport.user;
+  resolve({ session }) {
+    if (session.passport) {
+      return session.passport.user;
     }
-    throw new GraphQLError('Query error: Not logged in');
+
+    return null;
   }
 };
 
