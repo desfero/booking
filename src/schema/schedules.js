@@ -41,7 +41,7 @@ const list = {
   description: 'Information about all schedules.',
   type: new GraphQLList(scheduleType),
   resolve() {
-    return Bookings.getList();
+    return Schedules.getList();
   }
 };
 
