@@ -20,8 +20,12 @@ const userType = new GraphQLObjectType({
       description: 'Unique user id.',
       type: GraphQLID
     },
-    username: {
-      description: 'Unique username.',
+    name: {
+      description: 'User name.',
+      type: GraphQLString
+    },
+    surname: {
+      description: 'User surname.',
       type: GraphQLString
     },
     createdAt: {
@@ -32,8 +36,8 @@ const userType = new GraphQLObjectType({
       description: 'Time of last user update.',
       type: GraphQLDateTime
     },
-    mail: {
-      description: 'Optional E-Mail address.',
+    email: {
+      description: 'E-Mail address.',
       type: GraphQLEmail
     }
   })
@@ -63,26 +67,34 @@ const updateMail = {
   description: 'Update mail address of the currently logged in user.',
   type: userType,
   args: {
-    mail: {
+    email: {
       description: 'Non empty, valid E-Mail address.',
       type: GraphQLEmail
     }
   },
   resolve(root, _) {
     if (root.session.passport) {
-      return Users.updateMail(root.session.passport.user._id, _.mail);
+      return Users.updateMail(root.session.passport.user._id, _.email);
     }
     throw new GraphQLError('Query error: Not logged in');
   }
 };
 
 const signup = {
-  description: 'Register a new user account. Returns newly created user or null if username is taken.',
+  description: 'Register a new user account. Returns newly created user or null if email is taken.',
   type: userType,
   args: {
-    username: {
-      description: 'Username for new account.',
+    name: {
+      description: 'User name for new account.',
       type: GraphQLString
+    },
+    surname: {
+      description: 'Surname for new account.',
+      type: GraphQLString
+    },
+    email: {
+      description: 'Email for new account.',
+      type: GraphQLEmail
     },
     password: {
       description: 'Password for new account.',
@@ -90,7 +102,7 @@ const signup = {
     }
   },
   resolve(root, args) {
-    return Users.signup(args.username, args.password);
+    return Users.signup(args.name, args.surname, args.email, args.password);
   }
 };
 

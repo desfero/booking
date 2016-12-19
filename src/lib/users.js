@@ -5,19 +5,16 @@ class Users {
     return User.find({}).exec();
   }
 
-  static signup(username, password) {
-    console.log(username);
-    console.log(password);
+  static signup(name, surname, email, password) {
     var user = new User({
-      username: username,
-      password: password
+      name, surname, email, password
     });
 
     return user.save();
   }
 
-  static login(username, password, done) {
-    var findUser = User.findOne({ username: username }).exec();
+  static login(email, password, done) {
+    var findUser = User.findOne({email: email}).exec();
     var user = {};
     findUser.then((data) => {
       user = data;

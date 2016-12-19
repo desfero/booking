@@ -6,9 +6,11 @@ import Users from './../lib/users';
 const LocalStrategy = passportLocal.Strategy;
 const router = express.Router();
 
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    Users.login(username, password, done);
+passport.use(new LocalStrategy({
+    usernameField: 'email'
+  },
+  function (email, password, done) {
+    Users.login(email, password, done);
   }
 ));
 

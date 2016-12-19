@@ -3,11 +3,12 @@ import bcrypt from 'bcrypt-nodejs';
 
 const Schema = mongoose.Schema;
 const UserSchema = new Schema({
-  username: { type: String, required: true, index: { unique: true } },
+  name: {type: String, required: true},
+  surname: {type: String, required: true},
   password: { type: String, required: true },
+  email: {type: String, required: true, index: {unique: true}},
   createdAt: { type: Date },
-  updatedAt: { type: Date },
-  mail: { type: String }
+  updatedAt: {type: Date}
 });
 
 UserSchema.set('toJSON', { virtuals: true, getters: true });

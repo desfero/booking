@@ -13,10 +13,10 @@ const BookingSchema = new Schema({
     ref: 'User',
     required: true
   },
-    otherPassengers: [{
-        firstName: { type: String, required: true },
-        lastName: { type: String, required: true }
-    }]
+  otherPassengers: [{
+    firstName: {type: String, required: true},
+    lastName: {type: String, required: true}
+  }]
 });
 
 export default mongoose.model('Booking', BookingSchema);
