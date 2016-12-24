@@ -8,5 +8,17 @@ export default function () {
       from: 'CTA',
       to: 'VCE'
     })
-  ]
+  ];
+
+  ScheduleModel.find({})
+    .then(data => {
+      if (!data.length) {
+        ScheduleModel.insertMany(schedules)
+          .then(() => console.log('Default schedules added'))
+          .catch(err => console.error('Something went wrong adding ' +
+            'default schedules data', err));
+      }
+    })
+
+
 }

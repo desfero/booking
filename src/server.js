@@ -1,12 +1,12 @@
 import 'babel-polyfill';
 import express from 'express';
 import path from 'path';
-import mongoose from 'mongoose';
 import session from 'express-session';
 import bodyParser from 'body-parser';
 import mongoStore from 'connect-mongo';
 import cors from 'cors';
 import config from './config';
+import db from './db';
 import passport from './middlewares/passport';
 import graphql from './middlewares/graphql';
 import notFound from './middlewares/notFound';
@@ -14,11 +14,7 @@ import notFound from './middlewares/notFound';
 const port = config.port;
 const server = express();
 
-mongoose.Promise = global.Promise;
-mongoose.connect(config.mongoDB);
-
 server.set('port', config.port);
-server.use(express.static(path.join(__dirname, 'public')));
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 
@@ -28,7 +24,7 @@ server.use(session({
   secret: config.sessionSecret,
   resave: true,
   saveUninitialized: true,
-  store: new MongoStore({ mongooseConnection: mongoose.connection })
+  store: new MongoStore({mongooseConnection: db.connection})
 }));
 
 // enable cors
