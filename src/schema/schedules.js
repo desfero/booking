@@ -2,7 +2,8 @@ import {
   GraphQLObjectType,
   GraphQLString,
   GraphQLList,
-  GraphQLID
+  GraphQLID,
+  GraphQLInt
 } from 'graphql';
 import {
   GraphQLDateTime
@@ -33,6 +34,14 @@ const scheduleType = new GraphQLObjectType({
     to: {
       description: 'Schedule arrival station.',
       type: GraphQLString
+    },
+    price: {
+      description: 'Schedule price.',
+      type: GraphQLInt
+    },
+    seats: {
+      description: 'Available seats.',
+      type: new GraphQLList(GraphQLString)
     }
   })
 });

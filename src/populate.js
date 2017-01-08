@@ -6,7 +6,9 @@ export default function () {
       arrival: new Date(2017, 1, 3, 12, 30),
       departure: new Date(2017, 2, 3, 11, 30),
       from: 'CTA',
-      to: 'VCE'
+      to: 'VCE',
+      price: 20,
+      seats: ['1A', '1B', '1C', '2A', '2B', '2C', '3A', '3B', '3C']
     })
   ];
 
@@ -19,6 +21,4 @@ export default function () {
             'default schedules data', err));
       }
     })
-
-
 }
