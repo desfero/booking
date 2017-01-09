@@ -16,7 +16,8 @@ const BookingSchema = new Schema({
   otherPassengers: [{
     firstName: {type: String, required: true},
     lastName: {type: String, required: true}
-  }]
+  }],
+  selectedSeats: [{type: String, required: true}]
 });
 
 export default mongoose.model('Booking', BookingSchema);

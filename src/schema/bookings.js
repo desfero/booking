@@ -46,6 +46,10 @@ const bookingType = new GraphQLObjectType({
         otherPassengers: {
             description: 'Passenger without booking holder (firstPassenger)',
             type: new GraphQLList(passengerType)
+        },
+      selectedSeats: {
+        description: 'Selected seats',
+        type: new GraphQLList(GraphQLString)
         }
     })
 });
@@ -63,7 +67,7 @@ const create = {
     type: bookingType,
     // refactor to pass bookingType as arguments
     resolve(root, args) {
-      return Bookings.create(args);
+      return Bookings.addNew(args);
     }
 };
 
