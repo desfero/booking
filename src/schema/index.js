@@ -19,7 +19,8 @@ const mutationType = new GraphQLObjectType({
   description: 'Root for mutation operations.',
   fields: () => ({
     signup: users.signup,
-    updateEmail: users.updateMail
+    updateEmail: users.updateMail,
+    createBooking: bookings.create
   })
 });
 
