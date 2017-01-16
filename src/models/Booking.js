@@ -8,16 +8,25 @@ const BookingSchema = new Schema({
     ref: 'Schedule',
     required: true
   },
-  firstPassenger: {
+  owner: {
     type: Schema.Types.ObjectId,
     ref: 'User',
+    required: false
+  },
+  adults: {
+    type: Number,
     required: true
   },
-  otherPassengers: [{
-    firstName: {type: String, required: true},
-    lastName: {type: String, required: true}
-  }],
-  selectedSeats: [{type: String, required: true}]
+  childrens: {
+    type: Number,
+    required: true
+  },
+  infants: {
+    type: Number,
+    required: true
+  },
+  seats: [{type: String, required: true}]
+
 });
 
 export default mongoose.model('Booking', BookingSchema);

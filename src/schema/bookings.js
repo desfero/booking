@@ -2,6 +2,7 @@ import {
     GraphQLObjectType,
     GraphQLString,
     GraphQLList,
+  GraphQLInt,
     GraphQLID
 } from 'graphql';
 import {
@@ -11,21 +12,6 @@ import {
 import userType from './users';
 import scheduleType from './schedules';
 import Bookings from '../lib/bookings';
-
-const passengerType = new GraphQLObjectType({
-  name: 'Passenger',
-  description: 'Representation of booking passenger.',
-  fields: () => ({
-    firstName: {
-      description: 'Passenger first name',
-      type: GraphQLString
-    },
-    lastName: {
-      description: 'Passenger last name',
-      type: GraphQLString
-    }
-  })
-});
 
 const bookingType = new GraphQLObjectType({
   name: 'Booking',
@@ -39,15 +25,19 @@ const bookingType = new GraphQLObjectType({
       description: 'Booking schedule.',
       type: scheduleType
     },
-    firstPassenger: {
-      description: 'Booking holder.',
-      type: userType
+    adults: {
+      description: 'Number of adults',
+      type: GraphQLInt
     },
-    otherPassengers: {
-      description: 'Passenger without booking holder (firstPassenger)',
-      type: new GraphQLList(passengerType)
+    childrens: {
+      description: 'Number of childrens',
+      type: GraphQLInt
     },
-    selectedSeats: {
+    infants: {
+      description: 'Number of infants',
+      type: GraphQLInt
+    },
+    seats: {
       description: 'Selected seats',
       type: new GraphQLList(GraphQLString)
     }
@@ -69,11 +59,26 @@ const create = {
     schedule: {
       description: 'Selected schedule id.',
       type: GraphQLID
+    },
+    adults: {
+      description: 'Number of adults',
+      type: GraphQLInt
+    },
+    childrens: {
+      description: 'Number of childrens',
+      type: GraphQLInt
+    },
+    infants: {
+      description: 'Number of infants',
+      type: GraphQLInt
+    },
+    seats: {
+      description: 'Selected seats',
+      type: new GraphQLList(GraphQLString)
     }
   },
   resolve(root, args) {
-    console.log(args);
-    //return Bookings.addNew(args);
+    return Bookings.addNew(args);
   }
 };
 
