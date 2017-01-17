@@ -9,9 +9,10 @@ import {
     GraphQLDateTime
 } from 'graphql-custom-types';
 
-import userType from './users';
+//import userType from './users';
 import scheduleType from './schedules';
 import Bookings from '../lib/bookings';
+import Schedules from '../lib/shedules';
 
 const bookingType = new GraphQLObjectType({
   name: 'Booking',
@@ -78,6 +79,8 @@ const create = {
     }
   },
   resolve(root, args) {
+    Schedules.removeSeats(args.schedule, args.seats);
+
     return Bookings.addNew(args);
   }
 };
