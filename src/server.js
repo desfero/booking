@@ -29,7 +29,7 @@ server.use(session({
 
 // enable cors
 server.use(cors({
-  origin: 'http://127.0.0.1:4200',
+  origin: ['http://127.0.0.1:4200', 'https://desfero.github.io'],
   credentials: true
 }));
 
