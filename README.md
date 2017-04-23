@@ -6,7 +6,7 @@ Frontend: https://github.com/desfero/booking-fr
 
 ### Start the Development Server
 ```Bash
-npm run up
+npm start
 ```
 
 When starting the server there are a couple of parameters you can pass:
